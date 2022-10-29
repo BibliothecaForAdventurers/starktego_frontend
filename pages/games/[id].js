@@ -4,6 +4,8 @@ import { Head } from '../../components/Head'
 import { Lobby } from '../../components/Lobby'
 import { Setup } from '../../components/Setup'
 
+import {getLocation} from '../../components/utils'
+
 
 export default function Game() {
     // board
@@ -22,6 +24,9 @@ export default function Game() {
         if (stage === "lobby") {
             setPlayerPos([row, col])
         }
+        const locationCoordinates = getLocation(1,1)
+
+        console.log(locationCoordinates)
         console.log(`you clicked ${row} ${col}`)
     }
 
