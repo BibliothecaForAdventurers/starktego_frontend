@@ -12,7 +12,7 @@ export function Cell({ type, row, col, callback, playerPos }) {
             img = '/fog.png';
             break;
         case "player":
-            img = '/fog.png';
+            img = '/enemy_down.png';
             break;
         case "scouted":
             img = '/fog.png';
