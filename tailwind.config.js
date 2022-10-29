@@ -22,7 +22,11 @@ module.exports = {
         display: ['IM Fell DW Pica', 'serif'],
         body: ['IM Fell DW Pica', 'serif'],
         lords: ['Lords', 'serif'],
-      }
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        '20': 'repeat(20, minmax(0, 1fr))',
+      },
     },
   },
   plugins: [    
