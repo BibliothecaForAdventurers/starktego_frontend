@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Battlefield } from '../components/Battlefield';
-import { Head } from '../components/Head'
-import { Lobby } from '../components/Lobby'
-import { Setup } from '../components/Setup'
+import { Battlefield } from '../../components/Battlefield';
+import { Head } from '../../components/Head'
+import { Lobby } from '../../components/Lobby'
+import { Setup } from '../../components/Setup'
 
-import Link from 'next/link'
 
-export default function Home() {
+export default function Game() {
   // board
   const [boardData, setBoardData] = useState(
     Array(20).fill(0).map(x => Array(20).fill("fog"))
@@ -56,18 +55,16 @@ export default function Home() {
     };
   }, []);
 
-  const games = [1,2,3,4,5]
-
   return (
-    <div className="bg-dungeon bg-cover from-gray-400 to-black h-screen p-8 h-screen w-full flex justify-center">
+    <div className=" to-black h-screen bg-dungeon bg-cover flex justify-start w-full">
       <Head />
-      <div className='self-center h-69 w-69 bg-white p-10 text-black text-2xl'>
-        <ul>
-        {games.map((a, i)=> {
-            return <li key={i}><Link href={`/games/${a}`}>game {a}</Link></li>
-          })}
-        </ul>
-      </div>
+      
+        {/* <div className="border-2"><Setup /></div>
+        <div className="border-2"><Lobby players={players}/></div> */}
+        
+          <Battlefield data={boardData} callback={CellClickCallback} playerPos={playerPos}/>
+        
+    
     </div>
   )
 }

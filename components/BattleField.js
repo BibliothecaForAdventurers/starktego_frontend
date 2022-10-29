@@ -2,7 +2,7 @@ import { Cell } from "./Cell"
 
 export function Battlefield({ data, callback, playerPos }) {
     return (
-        <div className="grid grid-cols-20 gap-1">
+        <div className="grid grid-cols-20 absolute grid-position">
             {data.map((row, rowIndex) =>
                 row.map((cell, colIndex) =>
                     <Cell 

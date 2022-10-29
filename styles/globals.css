@@ -127,3 +127,16 @@ html {
   border-image: url('https://thumbs.dreamstime.com/b/closeup-old-paper-texture-age-marks-29969606.jpg')
     12 / 3px 1px 1px 1px / 0 repeat repeat;
 }
+
+
+.grid-position {
+  margin-left: 288px;
+  margin-top: 172px;
+
+}
+
+.cell-size{
+  width: 45.6px;
+  height: 30.3px;
+
+}

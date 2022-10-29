@@ -1,9 +1,4 @@
-import fogBlock from "../assets/fog.png"
-import playerBlock from "../assets/player.png"
-import scoutedBlock from "../assets/scouted.png"
-
 export function Cell({ type, row, col, callback, playerPos }) {
-
     function isCurrent(row, col, playerPos) {
         if (row == playerPos[0] && col == playerPos[1]) {
             return true
@@ -14,20 +9,20 @@ export function Cell({ type, row, col, callback, playerPos }) {
     let img = ""
     switch (type) {
         case "fog":
-            img = fogBlock;
+            img = '/fog.png';
             break;
         case "player":
-            img = playerBlock;
+            img = '/fog.png';
             break;
         case "scouted":
-            img = scoutedBlock;
+            img = '/fog.png';
             break;
     }
     return (
-        <button className={isCurrent(row, col, playerPos) ? "bg-blue-100" : ""} onClick={() => callback(row, col, type)}>
+        <button className={isCurrent(row, col, playerPos) ? "hover:bg-blue-900/80 bg-blue-900/80 rounded-md" : ""} onClick={() => callback(row, col, type)}>
             <img
-                className="hover:bg-sky-700"
-                src={img.src}
+                className="hover:bg-blue-900/80 cell-size"
+                src={img}
             />
         </button>
     )
