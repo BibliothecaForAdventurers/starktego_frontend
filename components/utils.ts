@@ -21,6 +21,25 @@ export async function getLocation(
   return response.data
 }
 
+interface validLocations {
+  x: number;
+  y: number;
+  hash: string;
+}
+
+export async function getNearbyLocations(
+  game_id: number,
+  player_id: number,
+): Promise<validLocations[]> {
+  const response = await axios.get(SERVER_URL + "get_nearby_locations", {
+    params: {
+      game_id: game_id,
+      player_id: player_id,
+    }
+  })
+  return response.data
+}
+
 //
 // SETTERS
 //
