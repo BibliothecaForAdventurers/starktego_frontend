@@ -1,8 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { Battlefield } from '../components/Battlefield';
 import { Head } from '../components/Head'
-import { Lobby } from '../components/Lobby'
-import { Setup } from '../components/Setup'
 
 import Link from 'next/link'
 
