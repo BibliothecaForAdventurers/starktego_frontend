@@ -4,7 +4,7 @@ import { Head } from '../../components/Head'
 import { Lobby } from '../../components/Lobby'
 import { Setup } from '../../components/Setup'
 
-import {getLocation} from '../../components/utils'
+import {getLocation, getMoveableLocations} from '../../components/utils'
 
 
 export default function Game() {
@@ -24,7 +24,11 @@ export default function Game() {
         if (stage === "lobby") {
             setPlayerPos([row, col])
         }
-        const locationCoordinates = getLocation(1,1)
+        else {
+            setPlayerPos([row, col])
+            setLocation(id, playerId, [row, col])
+        }
+        const locationCoordinates = getMoveableLocations(1,1)
 
         console.log(locationCoordinates)
         console.log(`you clicked ${row} ${col}`)

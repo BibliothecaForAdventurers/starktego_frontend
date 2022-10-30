@@ -27,16 +27,17 @@ interface validLocations {
   hash: string;
 }
 
-export async function getNearbyLocations(
+export async function getMoveableLocations(
   game_id: number,
   player_id: number,
 ): Promise<validLocations[]> {
-  const response = await axios.get(SERVER_URL + "get_nearby_locations", {
+  const response = await axios.get(SERVER_URL + "get_moveable_locations", {
     params: {
       game_id: game_id,
       player_id: player_id,
     }
   })
+  console.log(response)
   return response.data
 }
 
@@ -65,26 +66,20 @@ export async function setLocation(
     });
 }
 
-export async function setPlayer(
+export async function setPlayerData(
   game_id: number,
   random_number: number,
-  player_id: number,
   location: number[]
-) {
-  await axios.post(SERVER_URL + "set_player_data", {
+): Promise<number> {
+  const response = await axios.post(SERVER_URL + "set_player_data", {
     game_id: game_id,
     random_number: random_number,
-    player_id: player_id,
     location: {
       x: location[0],
       y: location[1],
     },
     unit_id: 0,
   })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  console.log(response)
+  return response.data
 }
