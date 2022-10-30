@@ -1,6 +1,6 @@
 import { Cell } from "./Cell"
 
-export function Battlefield({ data, callback, playerPos }) {
+export function Battlefield({ data, callback, playerPos, knownEnemies}) {
     return (
         <div className="grid grid-cols-20 absolute grid-position">
             {data.map((row, rowIndex) =>
@@ -12,6 +12,7 @@ export function Battlefield({ data, callback, playerPos }) {
                         col={colIndex}
                         callback={callback}
                         playerPos={playerPos}
+                        knownEnemies={knownEnemies}
                     />
                 )
             )}

@@ -17,6 +17,7 @@ export default function Game() {
     const [playerId, setPlayerId] = useState();
     const [stage, setStage] = useState("lobby");
     const [playerCounter, setPlayerCounter] = useState(1) // used to do some incrementals, prob not needed when we run three separate clients
+    const [knownEnemies, setKnownEnemies] = useState([])
 
     const router = useRouter()
     const { id } = router.query
@@ -74,6 +75,8 @@ export default function Game() {
             params,
         )
         console.log(otherPlayersResponse)
+        setKnownEnemies(otherPlayersResponse)
+        console.log(knownEnemies)
     }
 
     function CellClickCallback(row, col, value) {
@@ -108,7 +111,8 @@ export default function Game() {
             <Battlefield 
                 data={boardData}
                 callback={CellClickCallback} 
-                playerPos={playerPos} 
+                playerPos={playerPos}
+                knownEnemies={knownEnemies} 
             />
         </div>
     )
