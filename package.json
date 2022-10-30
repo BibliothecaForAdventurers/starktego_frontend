@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
     "@react-three/drei": "^9.37.1",
     "@react-three/fiber": "^8.8.10",
     "@starknet-react/core": "^0.14.5",
