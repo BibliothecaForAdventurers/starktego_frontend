@@ -19,9 +19,12 @@ export function Cell({ type, row, col, callback, playerPos, moveableLocations })
     }
     return (
         <button className={isCurrent(row, col, playerPos) ? "hover:bg-blue-900/80 bg-blue-900/80 rounded-md" : ""} onClick={() => callback(row, col, type)}>
+            <div className="absolute bg-black">
+
+            </div>
             <img
                 className="hover:bg-blue-900/80 cell-size"
-                src={img}
+                src={isCurrent(row, col, playerPos) ? '/enemy_down.png' : img}
             />
         </button>
     )
