@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { number } from 'starknet';
-import internal from 'stream';
+import { parse, stringify } from 'qs'
 
 const SERVER_URL = "http://ec2-3-253-6-99.eu-west-1.compute.amazonaws.com:8000/"
 
@@ -16,8 +15,33 @@ export async function getLocation(
     params: {
       game_id: game_id,
       player_id: player_id,
-    }
+    },
   })
+  return response.data
+}
+
+interface validLocations {
+  x: number;
+  y: number;
+  hash: string;
+}
+
+export async function getPlayerLocations(
+  gameId: number,
+  locations: number[],
+): Promise<string> {
+  const instance = axios.create({
+    paramsSerializer: {
+      serialize: (params) => stringify(params, {arrayFormat: 'repeat'})
+    },
+  });
+  const response = await instance.get(SERVER_URL + "get_player_locations", {
+    params: {
+      game_id: gameId,
+      coordinates: locations
+    },
+  })
+  //these should return collisions
   return response.data
 }
 

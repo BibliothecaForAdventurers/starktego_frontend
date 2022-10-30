@@ -3,7 +3,7 @@ import { Battlefield } from '../../components/Battlefield';
 import { Head } from '../../components/Head'
 import { Lobby } from '../../components/Lobby'
 import { Setup } from '../../components/Setup'
-import { setPlayerData, getLocation, setLocation, getMoveableLocations } from '../../components/utils';
+import { setPlayerData, getLocation, setLocation, getMoveableLocations, getPlayerLocations } from '../../components/utils';
 import { useRouter } from 'next/router'
 
 
@@ -55,6 +55,27 @@ export default function Game() {
         setBoardData(bd)
     }
 
+    async function getLocs() {
+        // setup params
+        var params = [];
+        for (const row in boardData){
+            for (const col in boardData[row]){
+                const r = parseInt(row)
+                const c = parseInt(col)
+                if (boardData[r][c].length > 16 ){
+                    params.push(r*10000+c)
+                }
+            }
+        }
+        console.log(id, params)
+        // call
+        const otherPlayersResponse = await getPlayerLocations(
+            id,
+            params,
+        )
+        console.log(otherPlayersResponse)
+    }
+
     function CellClickCallback(row, col, value) {
         let boardDataCopy = [...boardData]
         boardDataCopy[row][col] = value
@@ -79,6 +100,9 @@ export default function Game() {
                     <button onClick={() => pushData()}>push data</button>
                     <br/>
                     <button onClick={() => getLoc()}>get loc</button>
+                    <br/>
+                    <button onClick={() => getLocs()}>get locs</button>
+
                 </div>
             </div>
             <Battlefield 
