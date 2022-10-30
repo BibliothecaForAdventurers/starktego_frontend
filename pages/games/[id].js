@@ -29,9 +29,10 @@ export default function Game() {
 
     const revealCell = (revealedCells) => {
         for (let i = 0; i < revealedCells.length; i++) {
-
+            if (boardData[revealedCells[i].x][revealedCells[i].y] = 'scouted') {
+                setNewItemOnBoard("player", [revealedCells[i].x,revealedCells[i].y])
+            }
             setNewItemOnBoard("scouted", [revealedCells[i].x,revealedCells[i].y])
-
         }
     }
 
@@ -40,6 +41,7 @@ export default function Game() {
     const updatePlayerPosition = (newPos) => {
 
         // clear old position
+        // TODO: only clear scounted if player moves
         setNewItemOnBoard("scouted", playerPos)
 
         setPlayerPos(newPos)
@@ -68,8 +70,7 @@ export default function Game() {
     const lobbyId = 1
 
     const setAndSendLocation = async (playerId, gameId, position) => {
-        
-
+    
         try {
             await setLocation(playerId, gameId, position)
         } catch(e) {
