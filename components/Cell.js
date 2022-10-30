@@ -1,5 +1,3 @@
-
-
 export function Cell({ type, row, col, callback, playerPos, moveableLocations }) {
     function isCurrent(row, col, playerPos) {
         if (row == playerPos[0] && col == playerPos[1]) {
@@ -20,14 +18,11 @@ export function Cell({ type, row, col, callback, playerPos, moveableLocations })
             img = '/scouted.png';
     }
     return (
-        <button className={isCurrent(row, col, playerPos) ? "hover:bg-blue-900/80 bg-blue-900/20 rounded-md" : ""} onClick={() => callback(row, col, type)}>
-            <div className="absolute opacity-50 p-1">{row}, {col}</div>
-
+        <button className={isCurrent(row, col, playerPos) ? "hover:bg-blue-900/80 bg-blue-900/80 rounded-md" : ""} onClick={() => callback(row, col, type)}>
             <img
-                className="hover:bg-blue-red/20 cell-size"
+                className="hover:bg-blue-900/80 cell-size"
                 src={img}
             />
-
         </button>
     )
 }

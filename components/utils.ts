@@ -37,6 +37,7 @@ export async function getMoveableLocations(
       player_id: player_id,
     }
   })
+  console.log(response)
   return response.data
 }
 
